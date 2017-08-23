@@ -14,6 +14,8 @@
 		E9ECEF4F1F44A6B100A80583 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9ECEF4D1F44A6B100A80583 /* LaunchScreen.storyboard */; };
 		E9ECEF5A1F44A6B100A80583 /* ToDoManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECEF591F44A6B100A80583 /* ToDoManagerTests.swift */; };
 		E9ECEF651F44A6B100A80583 /* ToDoManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECEF641F44A6B100A80583 /* ToDoManagerUITests.swift */; };
+		E9ECEF731F487EE500A80583 /* GerenciadorTarefasModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECEF721F487EE500A80583 /* GerenciadorTarefasModel.swift */; };
+		E9ECEF791F49342400A80583 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECEF781F49342400A80583 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		E9ECEF601F44A6B100A80583 /* ToDoManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9ECEF641F44A6B100A80583 /* ToDoManagerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoManagerUITests.swift; sourceTree = "<group>"; };
 		E9ECEF661F44A6B100A80583 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9ECEF721F487EE500A80583 /* GerenciadorTarefasModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GerenciadorTarefasModel.swift; sourceTree = "<group>"; };
+		E9ECEF781F49342400A80583 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,8 @@
 				E9ECEF4B1F44A6B100A80583 /* Assets.xcassets */,
 				E9ECEF4D1F44A6B100A80583 /* LaunchScreen.storyboard */,
 				E9ECEF501F44A6B100A80583 /* Info.plist */,
+				E9ECEF721F487EE500A80583 /* GerenciadorTarefasModel.swift */,
+				E9ECEF781F49342400A80583 /* DetailViewController.swift */,
 			);
 			path = ToDoManager;
 			sourceTree = "<group>";
@@ -193,6 +199,7 @@
 				TargetAttributes = {
 					E9ECEF401F44A6B100A80583 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 55X7XV56SM;
 						ProvisioningStyle = Automatic;
 					};
 					E9ECEF541F44A6B100A80583 = {
@@ -260,7 +267,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9ECEF471F44A6B100A80583 /* ViewController.swift in Sources */,
+				E9ECEF731F487EE500A80583 /* GerenciadorTarefasModel.swift in Sources */,
 				E9ECEF451F44A6B100A80583 /* AppDelegate.swift in Sources */,
+				E9ECEF791F49342400A80583 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,11 +423,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 55X7XV56SM;
 				INFOPLIST_FILE = ToDoManager/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.unisinos.ToDoManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -426,11 +442,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 55X7XV56SM;
 				INFOPLIST_FILE = ToDoManager/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.unisinos.ToDoManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -507,6 +529,7 @@
 				E9ECEF6B1F44A6B100A80583 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E9ECEF6C1F44A6B100A80583 /* Build configuration list for PBXNativeTarget "ToDoManagerTests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +538,7 @@
 				E9ECEF6E1F44A6B100A80583 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E9ECEF6F1F44A6B100A80583 /* Build configuration list for PBXNativeTarget "ToDoManagerUITests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +547,7 @@
 				E9ECEF711F44A6B100A80583 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
