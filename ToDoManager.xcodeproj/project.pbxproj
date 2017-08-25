@@ -7,12 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A78C25F01F4FB0410049ADE5 /* GerenciadorTarefasModelTests1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78C25EF1F4FB0410049ADE5 /* GerenciadorTarefasModelTests1.swift */; };
+		A78C25F21F4FB21C0049ADE5 /* Tarefa.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78C25F11F4FB21C0049ADE5 /* Tarefa.swift */; };
+		A78C25F61F50A2A00049ADE5 /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78C25F31F50A2A00049ADE5 /* DateCollectionViewCell.swift */; };
+		A78C25F71F50A2A00049ADE5 /* DateTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78C25F41F50A2A00049ADE5 /* DateTimePicker.swift */; };
+		A78C25F81F50A2A00049ADE5 /* StepCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78C25F51F50A2A00049ADE5 /* StepCollectionViewFlowLayout.swift */; };
+		A78C25FA1F50C4300049ADE5 /* GerenciadorTarefasModelTests2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78C25F91F50C4300049ADE5 /* GerenciadorTarefasModelTests2.swift */; };
 		E9ECEF451F44A6B100A80583 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECEF441F44A6B100A80583 /* AppDelegate.swift */; };
 		E9ECEF471F44A6B100A80583 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECEF461F44A6B100A80583 /* ViewController.swift */; };
 		E9ECEF4A1F44A6B100A80583 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9ECEF481F44A6B100A80583 /* Main.storyboard */; };
 		E9ECEF4C1F44A6B100A80583 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9ECEF4B1F44A6B100A80583 /* Assets.xcassets */; };
 		E9ECEF4F1F44A6B100A80583 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9ECEF4D1F44A6B100A80583 /* LaunchScreen.storyboard */; };
-		E9ECEF5A1F44A6B100A80583 /* ToDoManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECEF591F44A6B100A80583 /* ToDoManagerTests.swift */; };
 		E9ECEF651F44A6B100A80583 /* ToDoManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECEF641F44A6B100A80583 /* ToDoManagerUITests.swift */; };
 		E9ECEF731F487EE500A80583 /* GerenciadorTarefasModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECEF721F487EE500A80583 /* GerenciadorTarefasModel.swift */; };
 		E9ECEF791F49342400A80583 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECEF781F49342400A80583 /* DetailViewController.swift */; };
@@ -36,6 +41,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A78C25EF1F4FB0410049ADE5 /* GerenciadorTarefasModelTests1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GerenciadorTarefasModelTests1.swift; sourceTree = "<group>"; };
+		A78C25F11F4FB21C0049ADE5 /* Tarefa.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tarefa.swift; sourceTree = "<group>"; };
+		A78C25F31F50A2A00049ADE5 /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
+		A78C25F41F50A2A00049ADE5 /* DateTimePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimePicker.swift; sourceTree = "<group>"; };
+		A78C25F51F50A2A00049ADE5 /* StepCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		A78C25F91F50C4300049ADE5 /* GerenciadorTarefasModelTests2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GerenciadorTarefasModelTests2.swift; sourceTree = "<group>"; };
 		E9ECEF411F44A6B100A80583 /* ToDoManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9ECEF441F44A6B100A80583 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9ECEF461F44A6B100A80583 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -44,7 +55,6 @@
 		E9ECEF4E1F44A6B100A80583 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E9ECEF501F44A6B100A80583 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9ECEF551F44A6B100A80583 /* ToDoManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E9ECEF591F44A6B100A80583 /* ToDoManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoManagerTests.swift; sourceTree = "<group>"; };
 		E9ECEF5B1F44A6B100A80583 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9ECEF601F44A6B100A80583 /* ToDoManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9ECEF641F44A6B100A80583 /* ToDoManagerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoManagerUITests.swift; sourceTree = "<group>"; };
@@ -101,6 +111,9 @@
 		E9ECEF431F44A6B100A80583 /* ToDoManager */ = {
 			isa = PBXGroup;
 			children = (
+				A78C25F31F50A2A00049ADE5 /* DateCollectionViewCell.swift */,
+				A78C25F41F50A2A00049ADE5 /* DateTimePicker.swift */,
+				A78C25F51F50A2A00049ADE5 /* StepCollectionViewFlowLayout.swift */,
 				E9ECEF441F44A6B100A80583 /* AppDelegate.swift */,
 				E9ECEF461F44A6B100A80583 /* ViewController.swift */,
 				E9ECEF481F44A6B100A80583 /* Main.storyboard */,
@@ -109,6 +122,7 @@
 				E9ECEF501F44A6B100A80583 /* Info.plist */,
 				E9ECEF721F487EE500A80583 /* GerenciadorTarefasModel.swift */,
 				E9ECEF781F49342400A80583 /* DetailViewController.swift */,
+				A78C25F11F4FB21C0049ADE5 /* Tarefa.swift */,
 			);
 			path = ToDoManager;
 			sourceTree = "<group>";
@@ -116,8 +130,9 @@
 		E9ECEF581F44A6B100A80583 /* ToDoManagerTests */ = {
 			isa = PBXGroup;
 			children = (
-				E9ECEF591F44A6B100A80583 /* ToDoManagerTests.swift */,
 				E9ECEF5B1F44A6B100A80583 /* Info.plist */,
+				A78C25EF1F4FB0410049ADE5 /* GerenciadorTarefasModelTests1.swift */,
+				A78C25F91F50C4300049ADE5 /* GerenciadorTarefasModelTests2.swift */,
 			);
 			path = ToDoManagerTests;
 			sourceTree = "<group>";
@@ -265,9 +280,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A78C25F21F4FB21C0049ADE5 /* Tarefa.swift in Sources */,
 				E9ECEF471F44A6B100A80583 /* ViewController.swift in Sources */,
 				E9ECEF731F487EE500A80583 /* GerenciadorTarefasModel.swift in Sources */,
+				A78C25F71F50A2A00049ADE5 /* DateTimePicker.swift in Sources */,
 				E9ECEF451F44A6B100A80583 /* AppDelegate.swift in Sources */,
+				A78C25F61F50A2A00049ADE5 /* DateCollectionViewCell.swift in Sources */,
+				A78C25F81F50A2A00049ADE5 /* StepCollectionViewFlowLayout.swift in Sources */,
 				E9ECEF791F49342400A80583 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,7 +295,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9ECEF5A1F44A6B100A80583 /* ToDoManagerTests.swift in Sources */,
+				A78C25F01F4FB0410049ADE5 /* GerenciadorTarefasModelTests1.swift in Sources */,
+				A78C25FA1F50C4300049ADE5 /* GerenciadorTarefasModelTests2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

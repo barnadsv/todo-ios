@@ -8,7 +8,8 @@
 
 import UIKit
 
-var gt: GerenciadorTarefas! = GerenciadorTarefas()
+var gt: GerenciadorTarefasModel! = GerenciadorTarefasModel()
+//var tarefa: Tarefa! = Tarefa()
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     

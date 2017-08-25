@@ -12,31 +12,11 @@ import Foundation
 
 import UIKit
 
-struct Tarefa {
-    public var dataCriacao: Date
-    public var titulo: String
-    public var descricao: String
-    public var dataLimite: Date
-    public var responsavel: String
-    
-    init(titulo: String, descricao: String, dataLimite: String, responsavel: String) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
-        dateFormatter.timeZone = TimeZone(abbreviation: "BRST")
-        self.dataCriacao = Date()
-        self.titulo = titulo
-        self.descricao = descricao
-        self.dataLimite = dataLimite != "" ? dateFormatter.date(from: dataLimite)! : dataCriacao
-        self.responsavel = responsavel
-    }
-    
-}
-
 /**
  Gerenciador de Tarefas
  Permite adicionar tarefas, buscar tarefas pela data de criação, pelo título, pela descrição, pela data limite e pelo responsável.
  */
-public class GerenciadorTarefas {
+public class GerenciadorTarefasModel {
     
     var listaTarefas = [Tarefa]()
     
@@ -54,9 +34,25 @@ public class GerenciadorTarefas {
             self.listaTarefas.append(tarefa)
         }
     }
-    
+
+    /**
+     Retorna o total de tarefas
+    */
     func retornaTarefasCount() -> Int {
         return self.listaTarefas.count
+    }
+
+    /**
+     Salva tarefa em uma determinada posição da lista de tarefas
+    */
+    func salvarTarefa(tarefa: Tarefa!, indice: Int) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
+        dateFormatter.timeZone = TimeZone(abbreviation: "BRST")
+        self.listaTarefas[indice].titulo = tarefa.titulo
+        self.listaTarefas[indice].descricao = tarefa.descricao
+        self.listaTarefas[indice].dataLimite = tarefa.dataLimite
+        self.listaTarefas[indice].responsavel = tarefa.responsavel        
     }
     
     /**
