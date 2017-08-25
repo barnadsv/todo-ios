@@ -55,6 +55,10 @@ public class GerenciadorTarefas {
         }
     }
     
+    func retornaTarefasCount() -> Int {
+        return self.listaTarefas.count
+    }
+    
     /**
      Lista todas as tarefas que estão no Gerenciador de Tarefas
      */

@@ -13,6 +13,7 @@ var gt: GerenciadorTarefas! = GerenciadorTarefas()
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     //let gerenciadorTarefas: GerenciadorTarefas
+    var indice = 0;
     var dataCriacao: String! = ""
     var titulo: String! = ""
     var descricao: String! = ""
@@ -29,6 +30,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if (input.text != "") {
             tarefa = Tarefa(titulo: input.text!, descricao: "", dataLimite: "", responsavel: "")
             gt.adicionarTarefa(tarefa: tarefa)
+            indice = gt.retornaTarefasCount() - 1
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
             dateFormatter.timeZone = TimeZone(abbreviation: "BRST")
@@ -63,6 +65,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let row = indexPath.row
+        indice = row
         print("Row: \(row)")
         
         let dateFormatter = DateFormatter()
@@ -78,12 +81,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "segueToDetailView") {
-            let viewController = segue.destination as! DetailViewController
-            viewController.dataCriacao = dataCriacao
-            viewController.titulo = titulo
-            viewController.descricao = descricao
-            viewController.dataLimite = dataLimite
-            viewController.responsavel = responsavel
+            let detailViewController = segue.destination as! DetailViewController
+            detailViewController.indice = indice
+            detailViewController.dataCriacao = dataCriacao
+            detailViewController.titulo = titulo
+            detailViewController.descricao = descricao
+            detailViewController.dataLimite = dataLimite
+            detailViewController.responsavel = responsavel
         }
     }
     
