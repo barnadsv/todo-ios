@@ -67,6 +67,10 @@ class GerenciadorTarefasModelFunctionsTests: XCTestCase {
         XCTAssertEqual(gt.listaTarefas[0].descricao, t1.descricao)
         XCTAssertEqual(gt.listaTarefas[0].dataLimite, t1.dataLimite)
         XCTAssertEqual(gt.listaTarefas[0].responsavel, t1.responsavel)
+        
+        t1.titulo = ""
+        gt.salvarTarefa(tarefa: t1, indice: 0)
+        XCTAssertEqual(gt.listaTarefas[0].titulo, "Tarefa1.1")
     }
 
     func testListarTarefas() {

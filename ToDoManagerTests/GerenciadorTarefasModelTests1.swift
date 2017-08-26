@@ -1,5 +1,5 @@
 //
-//  GerenciadorTarefasModelTest.swift
+//  GerenciadorTarefasModelTests1.swift
 //  ToDoManager
 //
 //  Created by Leonardo de Araujo Barnabe on 24/08/17.
@@ -12,7 +12,7 @@ import XCTest
 class GerenciadorTarefasConstructorTests: XCTestCase {
 
     var gt: GerenciadorTarefasModel!
-    var t1, t2, t3, t4, t5: Tarefa!
+    var t1, t2, t3, t4, t5, t6: Tarefa!
     var dateFormatter: DateFormatter!
     
     override func setUp() {
@@ -26,6 +26,7 @@ class GerenciadorTarefasConstructorTests: XCTestCase {
         t3 = Tarefa(titulo: "Tarefa3", descricao: "Tarefa 3 - Descrição", dataLimite: "15/10/2017 23:00:00", responsavel: "Maria")
         t4 = Tarefa(titulo: "Tarefa4", descricao: "Tarefa 4 - Descrição", dataLimite: "31/08/2017 23:00:00", responsavel: "Ronaldo")
         t5 = Tarefa(titulo: "Tarefa5", descricao: "Tarefa 5 - Descrição", dataLimite: "05/12/2017 23:00:00", responsavel: "Maria")
+        t6 = Tarefa(titulo: "", descricao: "Tarefa 5 - Descrição", dataLimite: "05/12/2017 23:00:00", responsavel: "Maria")
     }
     
     override func tearDown() {
@@ -36,6 +37,7 @@ class GerenciadorTarefasConstructorTests: XCTestCase {
         t3 = nil
         t4 = nil
         t5 = nil
+        t6 = nil
     }
 
     func testGerenciadorTarefas() {
@@ -48,7 +50,6 @@ class GerenciadorTarefasConstructorTests: XCTestCase {
         gt.adicionarTarefa(tarefa: t3)
         gt.adicionarTarefa(tarefa: t4)
         gt.adicionarTarefa(tarefa: t5)
-        gt.adicionarTarefa(tarefa: nil)
         XCTAssertEqual(gt.listaTarefas.count, 5)
         XCTAssertEqual(gt.listaTarefas[0].titulo, t1.titulo)
         XCTAssertEqual(gt.listaTarefas[0].dataCriacao, t1.dataCriacao)
@@ -75,6 +76,10 @@ class GerenciadorTarefasConstructorTests: XCTestCase {
         XCTAssertEqual(gt.listaTarefas[4].descricao, t5.descricao)
         XCTAssertEqual(gt.listaTarefas[4].dataLimite, t5.dataLimite)
         XCTAssertEqual(gt.listaTarefas[4].responsavel, t5.responsavel)
+        gt.adicionarTarefa(tarefa: t6)
+        XCTAssert(gt.retornaTarefasCount() == 5)
+        gt.adicionarTarefa(tarefa: nil)
+        XCTAssert(gt.retornaTarefasCount() == 5)
     }
     
     func testPerformanceExample() {

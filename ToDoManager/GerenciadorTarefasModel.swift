@@ -20,17 +20,12 @@ public class GerenciadorTarefasModel {
     
     var listaTarefas = [Tarefa]()
     
-    //init() {
-    //    listaTarefas.append(Tarefa(titulo: "teste0", descricao: "", dataLimite: "", responsavel: ""))
-    //    listaTarefas.append(Tarefa(titulo: "teste1", descricao: "", dataLimite: "", responsavel: ""))
-    //}
-    
     /**
      Adiciona tarefa ao Gerenciador de Tarefas
      - parameter tarefa: Tarefa a ser adicionada
      */
     func adicionarTarefa(tarefa: Tarefa!) {
-        if (tarefa != nil) {
+        if (tarefa != nil && tarefa.titulo != "") {
             self.listaTarefas.append(tarefa)
         }
     }
@@ -46,13 +41,15 @@ public class GerenciadorTarefasModel {
      Salva tarefa em uma determinada posição da lista de tarefas
     */
     func salvarTarefa(tarefa: Tarefa!, indice: Int) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
-        dateFormatter.timeZone = TimeZone(abbreviation: "BRST")
-        self.listaTarefas[indice].titulo = tarefa.titulo
-        self.listaTarefas[indice].descricao = tarefa.descricao
-        self.listaTarefas[indice].dataLimite = tarefa.dataLimite
-        self.listaTarefas[indice].responsavel = tarefa.responsavel        
+        if (tarefa != nil && tarefa.titulo != "") {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
+            dateFormatter.timeZone = TimeZone(abbreviation: "BRST")
+            self.listaTarefas[indice].titulo = tarefa.titulo
+            self.listaTarefas[indice].descricao = tarefa.descricao
+            self.listaTarefas[indice].dataLimite = tarefa.dataLimite
+            self.listaTarefas[indice].responsavel = tarefa.responsavel
+        }
     }
     
     /**
