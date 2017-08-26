@@ -57,6 +57,15 @@ class GerenciadorTarefasModelFunctionsTests: XCTestCase {
         t5 = nil
     }
     
+    func testValidaDataHorario() {
+        XCTAssertTrue(gt.validaDataHorario(dataHorario: "31/05/2017 00:00:00"))
+        XCTAssertFalse(gt.validaDataHorario(dataHorario: "32/05/2017 00:00:00"))
+        XCTAssertFalse(gt.validaDataHorario(dataHorario: "31/13/2017 00:00:00"))
+        XCTAssertFalse(gt.validaDataHorario(dataHorario: "31/05/2017 25:00:00"))
+        XCTAssertFalse(gt.validaDataHorario(dataHorario: "31/05/2017 00:60:00"))
+        XCTAssertFalse(gt.validaDataHorario(dataHorario: "31/05/2017 00:00:60"))
+    }
+    
     func testSalvarTarefa() {
         t1.titulo = "Tarefa1.1"
         t1.descricao = "Tarefa 1.1 - Descrição"
@@ -68,6 +77,7 @@ class GerenciadorTarefasModelFunctionsTests: XCTestCase {
         XCTAssertEqual(gt.listaTarefas[0].dataLimite, t1.dataLimite)
         XCTAssertEqual(gt.listaTarefas[0].responsavel, t1.responsavel)
         
+        // Titulo vazio
         t1.titulo = ""
         gt.salvarTarefa(tarefa: t1, indice: 0)
         XCTAssertEqual(gt.listaTarefas[0].titulo, "Tarefa1.1")

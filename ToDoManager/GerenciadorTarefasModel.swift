@@ -53,6 +53,18 @@ public class GerenciadorTarefasModel {
     }
     
     /**
+     Verifica se a data e horário estão no formato correto
+    */
+    func validaDataHorario(dataHorario: String) -> Bool {
+        let dataLimitePattern = "^(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[0-2])/\\d\\d\\d\\d (00|[0-9]|1[0-9]|2[0-3]):([0-9]|[0-5][0-9]):([0-9]|[0-5][0-9])$"
+        let dataLimiteRegex = try! NSRegularExpression(pattern: dataLimitePattern)
+        let dataLimiteRange = NSMakeRange(0, dataHorario.characters.count)
+        let matchRange = dataLimiteRegex.rangeOfFirstMatch(in: dataHorario, options: .reportProgress, range: dataLimiteRange)
+        let valid = matchRange.location != NSNotFound
+        return valid
+    }
+    
+    /**
      Lista todas as tarefas que estão no Gerenciador de Tarefas
      */
     func listarTarefas() -> String {

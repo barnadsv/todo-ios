@@ -8,8 +8,6 @@
 
 import UIKit
 
-//var gt: GerenciadorTarefas! = GerenciadorTarefas()
-
 class DetailViewController: UIViewController {
     
     @IBOutlet weak var tituloTextField: UITextField!
@@ -25,23 +23,22 @@ class DetailViewController: UIViewController {
     var dataLimite: String! = ""
     var responsavel: String = ""
     
-    //let gerenciadorTarefas: GerenciadorTarefas
     @IBAction func saveTarefa(_ sender: Any) {
         if (tituloTextField.text != "") {
-            var tarefa: Tarefa!
-            titulo = tituloTextField.text
-            descricao = descricaoTextField.text
-            dataLimite = dataLimiteTextField.text != "" ? dataLimiteTextField.text : dataCriacaoLabel.text
-            if (dataLimite!.characters.count < 17) {
-                dataLimite! += " 00:00:00"
+            if (gt.validaDataHorario(dataHorario: dataLimiteTextField.text!) == true || dataLimiteTextField.text == "") {
+                var tarefa: Tarefa!
+                titulo = tituloTextField.text
+                descricao = descricaoTextField.text
+                dataLimite = dataLimiteTextField.text
+                responsavel = responsavelTextField.text!
+                tarefa = Tarefa(titulo: titulo, descricao: descricao, dataLimite: dataLimite, responsavel: responsavel)
+                gt.salvarTarefa(tarefa: tarefa, indice: indice)
+            } else {
+                let alertController = UIAlertController(title: "Atenção", message:
+                    "Formato da Data Limite está incorreto!", preferredStyle: UIAlertControllerStyle.alert)
+                alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default,handler: nil))
+                self.present(alertController, animated: true, completion: nil)
             }
-            responsavel = responsavelTextField.text!
-            tarefa = Tarefa(titulo: titulo, descricao: descricao, dataLimite: dataLimite, responsavel: responsavel)
-            gt.salvarTarefa(tarefa: tarefa, indice: indice)
-//            gt.listaTarefas[indice].titulo = titulo
-//            gt.listaTarefas[indice].descricao = descricao
-//            gt.listaTarefas[indice].dataLimite = dateFormatter.date(from: dataLimite!)!
-//            gt.listaTarefas[indice].responsavel = responsavel
         } else {
             let alertController = UIAlertController(title: "Atenção", message:
                 "Título não pode ser vazio!", preferredStyle: UIAlertControllerStyle.alert)
@@ -51,7 +48,7 @@ class DetailViewController: UIViewController {
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if (identifier == "segueToListView" && tituloTextField.text == "") {
+        if (identifier == "segueToListView" && (tituloTextField.text! == "" || (gt.validaDataHorario(dataHorario: dataLimiteTextField.text!) == false && dataLimiteTextField.text != ""))) {
             return false
         } else {
             return true

@@ -9,11 +9,9 @@
 import UIKit
 
 var gt: GerenciadorTarefasModel! = GerenciadorTarefasModel()
-//var tarefa: Tarefa! = Tarefa()
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    //let gerenciadorTarefas: GerenciadorTarefas
     var indice = 0;
     var dataCriacao: String! = ""
     var titulo: String! = ""
