@@ -10,9 +10,6 @@
 		872D28FE4018F45AB16CE0B2 /* Pods_ToDoManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64906CD5C7513BB3244C84D1 /* Pods_ToDoManager.framework */; };
 		A78C25F01F4FB0410049ADE5 /* GerenciadorTarefasModelTests1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78C25EF1F4FB0410049ADE5 /* GerenciadorTarefasModelTests1.swift */; };
 		A78C25F21F4FB21C0049ADE5 /* Tarefa.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78C25F11F4FB21C0049ADE5 /* Tarefa.swift */; };
-		A78C25F61F50A2A00049ADE5 /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78C25F31F50A2A00049ADE5 /* DateCollectionViewCell.swift */; };
-		A78C25F71F50A2A00049ADE5 /* DateTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78C25F41F50A2A00049ADE5 /* DateTimePicker.swift */; };
-		A78C25F81F50A2A00049ADE5 /* StepCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78C25F51F50A2A00049ADE5 /* StepCollectionViewFlowLayout.swift */; };
 		A78C25FA1F50C4300049ADE5 /* GerenciadorTarefasModelTests2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78C25F91F50C4300049ADE5 /* GerenciadorTarefasModelTests2.swift */; };
 		E9ECEF451F44A6B100A80583 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECEF441F44A6B100A80583 /* AppDelegate.swift */; };
 		E9ECEF471F44A6B100A80583 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECEF461F44A6B100A80583 /* ViewController.swift */; };
@@ -47,9 +44,6 @@
 		8DAFF9F159DE535C75D3C120 /* Pods-ToDoManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoManager.release.xcconfig"; path = "Pods/Target Support Files/Pods-ToDoManager/Pods-ToDoManager.release.xcconfig"; sourceTree = "<group>"; };
 		A78C25EF1F4FB0410049ADE5 /* GerenciadorTarefasModelTests1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GerenciadorTarefasModelTests1.swift; sourceTree = "<group>"; };
 		A78C25F11F4FB21C0049ADE5 /* Tarefa.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tarefa.swift; sourceTree = "<group>"; };
-		A78C25F31F50A2A00049ADE5 /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
-		A78C25F41F50A2A00049ADE5 /* DateTimePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimePicker.swift; sourceTree = "<group>"; };
-		A78C25F51F50A2A00049ADE5 /* StepCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		A78C25F91F50C4300049ADE5 /* GerenciadorTarefasModelTests2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GerenciadorTarefasModelTests2.swift; sourceTree = "<group>"; };
 		E9ECEF411F44A6B100A80583 /* ToDoManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9ECEF441F44A6B100A80583 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -127,9 +121,6 @@
 		E9ECEF431F44A6B100A80583 /* ToDoManager */ = {
 			isa = PBXGroup;
 			children = (
-				A78C25F31F50A2A00049ADE5 /* DateCollectionViewCell.swift */,
-				A78C25F41F50A2A00049ADE5 /* DateTimePicker.swift */,
-				A78C25F51F50A2A00049ADE5 /* StepCollectionViewFlowLayout.swift */,
 				E9ECEF441F44A6B100A80583 /* AppDelegate.swift */,
 				E9ECEF461F44A6B100A80583 /* ViewController.swift */,
 				E9ECEF481F44A6B100A80583 /* Main.storyboard */,
@@ -364,10 +355,7 @@
 				A78C25F21F4FB21C0049ADE5 /* Tarefa.swift in Sources */,
 				E9ECEF471F44A6B100A80583 /* ViewController.swift in Sources */,
 				E9ECEF731F487EE500A80583 /* GerenciadorTarefasModel.swift in Sources */,
-				A78C25F71F50A2A00049ADE5 /* DateTimePicker.swift in Sources */,
 				E9ECEF451F44A6B100A80583 /* AppDelegate.swift in Sources */,
-				A78C25F61F50A2A00049ADE5 /* DateCollectionViewCell.swift in Sources */,
-				A78C25F81F50A2A00049ADE5 /* StepCollectionViewFlowLayout.swift in Sources */,
 				E9ECEF791F49342400A80583 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
