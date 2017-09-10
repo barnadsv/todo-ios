@@ -30,7 +30,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="puu-ZX-DB0">
-                                <rect key="frame" x="0.0" y="100" width="375" height="567"/>
+                                <rect key="frame" x="0.0" y="110" width="375" height="557"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                                 <prototypes>
@@ -38,7 +38,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="l3Y-VK-yzR" id="WQs-jW-pRW">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
@@ -68,11 +68,11 @@
                             <constraint firstItem="VGH-ZQ-as2" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="0Fc-6v-aqn"/>
                             <constraint firstItem="VGH-ZQ-as2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="BE1-DD-Fvr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aHS-oU-fMJ" secondAttribute="trailing" constant="10" id="IWF-Jp-tSt"/>
-                            <constraint firstItem="puu-ZX-DB0" firstAttribute="top" secondItem="aHS-oU-fMJ" secondAttribute="bottom" id="Lnw-Wb-Exx"/>
+                            <constraint firstItem="puu-ZX-DB0" firstAttribute="top" secondItem="aHS-oU-fMJ" secondAttribute="bottom" constant="10" id="Lnw-Wb-Exx"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="puu-ZX-DB0" secondAttribute="bottom" id="SZj-lx-2hw"/>
                             <constraint firstItem="puu-ZX-DB0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="WOB-iG-37m"/>
+                            <constraint firstAttribute="trailing" secondItem="puu-ZX-DB0" secondAttribute="trailing" id="X9b-rA-DsO"/>
                             <constraint firstItem="aHS-oU-fMJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="Yjc-Pq-B9D"/>
-                            <constraint firstAttribute="trailing" secondItem="puu-ZX-DB0" secondAttribute="trailing" id="Z1Q-1T-8sN"/>
                             <constraint firstAttribute="trailing" secondItem="VGH-ZQ-as2" secondAttribute="trailing" constant="10" id="evV-xD-Xhx"/>
                             <constraint firstItem="aHS-oU-fMJ" firstAttribute="top" secondItem="VGH-ZQ-as2" secondAttribute="bottom" constant="10" id="spN-gP-tco"/>
                         </constraints>
@@ -80,6 +80,7 @@
                     <navigationItem key="navigationItem" title="Lista de Tarefas" id="xkl-om-Z3b"/>
                     <connections>
                         <outlet property="TodoTableView" destination="puu-ZX-DB0" id="eAA-LE-SH0"/>
+                        <outlet property="criarTarefaButton" destination="aHS-oU-fMJ" id="2hm-ef-IxB"/>
                         <outlet property="input" destination="VGH-ZQ-as2" id="Mb6-wm-nh2"/>
                     </connections>
                 </viewController>
@@ -239,6 +240,7 @@
                         <outlet property="dataLimiteTextField" destination="NBO-Mg-kDa" id="qWu-LZ-64u"/>
                         <outlet property="descricaoTextField" destination="s0b-xZ-RhO" id="yLq-aj-6sS"/>
                         <outlet property="responsavelTextField" destination="YyV-iP-tHu" id="lQ1-1S-PoA"/>
+                        <outlet property="salvarTarefaButton" destination="CfB-E3-PuB" id="s1A-pk-Ibo"/>
                         <outlet property="tituloTextField" destination="UuX-Hl-zyp" id="vVQ-wq-Xs1"/>
                     </connections>
                 </viewController>
@@ -251,7 +253,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="K2Q-0a-0RA" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QlV-rG-Rh1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="QlV-rG-Rh1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

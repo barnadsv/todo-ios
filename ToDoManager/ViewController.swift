@@ -24,6 +24,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var input: UITextField!
     @IBOutlet weak var todoTableView: UITableView!
+    @IBOutlet weak var criarTarefaButton: UIButton!
     
     @IBAction func addItem(_ sender: Any) {
         if (input.text != "") {
@@ -51,6 +52,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "item")
         item.textLabel?.text = gt.listaTarefas[indexPath.row].titulo
+        item.accessoryType = .disclosureIndicator
+        
+        let bgColorView = UIView()
+        bgColorView.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+        item.selectedBackgroundView = bgColorView
+        
         return(item)
     }
     
@@ -92,11 +99,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidAppear(_ animated: Bool) {
         todoTableView.reloadData()
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let borderColor = UIColor.lightGray
+        input.layer.borderColor = borderColor.cgColor
+        input.layer.borderWidth = 1.0
+        input.layer.cornerRadius = 5
+        criarTarefaButton.layer.cornerRadius = 5
     }
 
     override func didReceiveMemoryWarning() {

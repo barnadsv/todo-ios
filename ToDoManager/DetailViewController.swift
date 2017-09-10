@@ -15,6 +15,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var dataLimiteTextField: UITextField!
     @IBOutlet weak var responsavelTextField: UITextField!
     @IBOutlet weak var dataCriacaoLabel: UILabel!
+    @IBOutlet weak var salvarTarefaButton: UIButton!
     
     var indice = 0
     var dataCriacao: String = ""
@@ -91,6 +92,26 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        let borderColor = UIColor.lightGray
+        tituloTextField.layer.borderColor = borderColor.cgColor
+        tituloTextField.layer.borderWidth = 1.0
+        tituloTextField.layer.cornerRadius = 5
+        
+        descricaoTextField.layer.borderColor = borderColor.cgColor
+        descricaoTextField.layer.borderWidth = 1.0
+        descricaoTextField.layer.cornerRadius = 5
+        
+        dataLimiteTextField.layer.borderColor = borderColor.cgColor
+        dataLimiteTextField.layer.borderWidth = 1.0
+        dataLimiteTextField.layer.cornerRadius = 5
+        
+        responsavelTextField.layer.borderColor = borderColor.cgColor
+        responsavelTextField.layer.borderWidth = 1.0
+        responsavelTextField.layer.cornerRadius = 5
+        
+        salvarTarefaButton.layer.cornerRadius = 5
+        
         dataCriacaoLabel.text = dataCriacao
         tituloTextField.text = titulo
         descricaoTextField.text = descricao
