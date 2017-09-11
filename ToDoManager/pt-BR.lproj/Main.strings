@@ -1,0 +1,36 @@
+
+/* Class = "UILabel"; text = "Detalhes da Tarefa"; ObjectID = "B0e-q1-mM2"; */
+"B0e-q1-mM2.text" = "Detalhes da Tarefa";
+
+/* Class = "UIButton"; normalTitle = "Salvar Tarefa"; ObjectID = "CfB-E3-PuB"; */
+"CfB-E3-PuB.normalTitle" = "Salvar Tarefa";
+
+/* Class = "UILabel"; text = "Data de Criação"; ObjectID = "QTQ-Up-BIo"; */
+"QTQ-Up-BIo.text" = "Data de Criação";
+
+/* Class = "UITextField"; accessibilityHint = "New ToDo"; ObjectID = "VGH-ZQ-as2"; */
+"VGH-ZQ-as2.accessibilityHint" = "New ToDo";
+
+/* Class = "UITextField"; placeholder = "Nova Tarefa"; ObjectID = "VGH-ZQ-as2"; */
+"VGH-ZQ-as2.placeholder" = "Nova Tarefa";
+
+/* Class = "UILabel"; text = "Data de Criação"; ObjectID = "Xo6-qC-Z2I"; */
+"Xo6-qC-Z2I.text" = "Data de Criação";
+
+/* Class = "UIButton"; normalTitle = "Criar Tarefa"; ObjectID = "aHS-oU-fMJ"; */
+"aHS-oU-fMJ.normalTitle" = "Criar Tarefa";
+
+/* Class = "UILabel"; text = "Descrição"; ObjectID = "cPK-oA-xQN"; */
+"cPK-oA-xQN.text" = "Descrição";
+
+/* Class = "UILabel"; text = "Título"; ObjectID = "pTJ-Tq-5uF"; */
+"pTJ-Tq-5uF.text" = "Título";
+
+/* Class = "UILabel"; text = "Data Limite"; ObjectID = "wWw-wa-zFD"; */
+"wWw-wa-zFD.text" = "Data Limite";
+
+/* Class = "UILabel"; text = "Responsável"; ObjectID = "xJ2-OP-G5M"; */
+"xJ2-OP-G5M.text" = "Responsável";
+
+/* Class = "UINavigationItem"; title = "Lista de Tarefas"; ObjectID = "xkl-om-Z3b"; */
+"xkl-om-Z3b.title" = "Lista de Tarefas";
