@@ -9,8 +9,6 @@
 import UIKit
 import CoreData
 
-//var gt: GerenciadorTarefasModel! = GerenciadorTarefasModel()
-
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     fileprivate var tarefas : [NSManagedObject] = []
@@ -34,8 +32,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBAction func addItem(_ sender: Any) {
         if (input.text != "") {
-            //tarefa = Tarefa(titulo: input.text!, descricao: "", dataLimite: "", responsavel: "")
-            //gt.adicionarTarefa(tarefa: tarefa)
             uuid = UUID().uuidString
             dataCriacao = NSDate()
             dataLimite = NSDate()
@@ -61,7 +57,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return (gt.listaTarefas.count)
         return Tarefas.sharedInstance.tarefas.count
     }
     
@@ -74,7 +69,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let item = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "item")
         item.textLabel?.text = Tarefas.sharedInstance.tarefas[indexPath.row].titulo
         item.detailTextLabel?.text = dateFormatter.string(from: Tarefas.sharedInstance.tarefas[indexPath.row].dataCriacao! as Date)
-        //item.textLabel?.text = gt.listaTarefas[indexPath.row].titulo
         item.accessoryType = .disclosureIndicator
         
         let bgColorView = UIView()
@@ -86,8 +80,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
-            //Tarefas.sharedInstance.tarefas.remove(at: indexPath.row)
-            //gt.listaTarefas.remove(at: indexPath.row)
             Tarefas.sharedInstance.apagaTarefa(uuid: Tarefas.sharedInstance.tarefas[indexPath.row].uuid!)
             tarefas = Tarefas.sharedInstance.getTarefas()
             todoTableView.reloadData()
@@ -103,19 +95,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
         dateFormatter.timeZone = TimeZone(abbreviation: "BRST")
-        //strDataCriacao = dateFormatter.string(from: gt.listaTarefas[row].dataCriacao)
-        //strDataCriacao = dateFormatter.string(from: Tarefas.sharedInstance.tarefas[row].dataCriacao! as Date)
         uuid = Tarefas.sharedInstance.tarefas[row].uuid
         dataCriacao = Tarefas.sharedInstance.tarefas[row].dataCriacao!
         titulo = Tarefas.sharedInstance.tarefas[row].titulo
         descricao = Tarefas.sharedInstance.tarefas[row].descricao
-        //strDataLimite = dateFormatter.string(from: Tarefas.sharedInstance.tarefas[row].dataLimite! as Date)
         dataLimite = Tarefas.sharedInstance.tarefas[row].dataLimite!
         responsavel = Tarefas.sharedInstance.tarefas[row].responsavel
-        //titulo = gt.listaTarefas[row].titulo
-        //descricao = gt.listaTarefas[row].descricao
-        //strDataLimite = dateFormatter.string(from: gt.listaTarefas[row].dataLimite)
-        //responsavel = gt.listaTarefas[row].responsavel
         performSegue(withIdentifier: "segueToDetailView", sender: self)
     }
     
@@ -154,7 +139,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 

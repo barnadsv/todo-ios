@@ -31,17 +31,13 @@ class DetailViewController: UIViewController {
     @IBAction func saveTarefa(_ sender: Any) {
         if (tituloTextField.text != "") {
             if (Tarefas.sharedInstance.validaDataHorario(dataHorario: dataLimiteTextField.text!) == true || dataLimiteTextField.text == "") {
-                //var tarefa: Tarefa!
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
                 dateFormatter.timeZone = TimeZone(abbreviation: "BRST")
                 titulo = tituloTextField.text
                 descricao = descricaoTextField.text
-                //dataLimite = dataLimiteTextField.text
                 dataLimite = dateFormatter.date(from: dataLimiteTextField.text!)! as NSDate
                 responsavel = responsavelTextField.text!
-                //tarefa = Tarefa(titulo: titulo, descricao: descricao, dataLimite: dataLimite, responsavel: responsavel)
-                //gt.salvarTarefa(tarefa: tarefa, indice: indice)
                 Tarefas.sharedInstance.atualizaTarefa(uuid: uuid, titulo: titulo, descricao: descricao, dataLimite: dataLimite, responsavel: responsavel)
             } else {
                 let alertController = UIAlertController(title: "Atenção", message:

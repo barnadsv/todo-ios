@@ -16,6 +16,9 @@ public class Tarefas {
     var tarefas = [Tarefa]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    /**
+     Retorna todas as tarefas
+    */
     func getTarefas() -> [Tarefa] {
         do {
             tarefas = try context.fetch(Tarefa.fetchRequest())
@@ -88,5 +91,64 @@ public class Tarefas {
         return valid
     }
         
-
+    /**
+     Retorna todas as tarefas do Gerenciador de Tarefas cuja data de criação contém o termo de busca fornecido
+     - parameter termo: Termo de busca fornecido
+     */
+    func findTarefasByDataCriacao(termo: String) -> [Tarefa] {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
+        dateFormatter.timeZone = TimeZone(abbreviation: "BRST")
+        return tarefas.filter {
+            let strDataCriacao = dateFormatter.string(from: $0.dataCriacao as! Date)
+            return strDataCriacao.range(of: termo) != nil
+        }
+    }
+    
+    /**
+     Retorna todas as tarefas do Gerenciador de Tarefas cujo título contem o termo de busca fornecido
+     - parameter termo: Termo de busca fornecido
+     */
+    func findTarefasByTitulo(termo: String) -> [Tarefa] {
+        return tarefas.filter { return $0.titulo!.range(of: termo) != nil }
+    }
+    
+    /**
+     Retorna todas as tarefas do Gerenciador de Tarefas cuja descrição contém o termo de busca fornecido
+     - parameter termo: Termo de busca fornecido
+     */
+    func findTarefasByDescricao(termo: String) -> [Tarefa] {
+        return tarefas.filter({ (tarefa: Tarefa) -> Bool in return tarefa.descricao!.range(of: termo) != nil })
+    }
+    
+    /**
+     Retorna todas as tarefas do Gerenciador de Tarefas cuja data limite contém o termo de busca fornecido
+     - parameter termo: Termo de busca fornecido
+     */
+    func findTarefasByDataLimite(termo: String) -> [Tarefa] {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
+        dateFormatter.timeZone = TimeZone(abbreviation: "BRST")
+        return tarefas.filter {
+            let strDataLimite = dateFormatter.string(from: $0.dataLimite! as Date)
+            return strDataLimite.range(of: termo) != nil
+        }
+    }
+    
+    /**
+     Retorna todas as tarefas do Gerenciador de Tarefas cuja responsável contém o termo de busca fornecido
+     - parameter termo: Termo de busca fornecido
+     */
+    func findTarefasByResponsavel(termo: String) -> [Tarefa] {
+        return tarefas.filter { return $0.responsavel!.range(of: termo) != nil }
+    }
+    
+    
+    /**
+     Ordena as tarefas do Gerenciador de Tarefas pela data limite
+     - parameter termo: Termo de busca fornecido
+     */
+    func orderByDataLimite() -> [Tarefa] {
+        return tarefas.sorted(by: { $0.dataLimite?.compare($1.dataLimite! as Date) == ComparisonResult.orderedAscending})
+    }
 }
