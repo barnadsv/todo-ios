@@ -16,9 +16,44 @@ import UIKit
  Gerenciador de Tarefas
  Permite adicionar tarefas, buscar tarefas pela data de criação, pelo título, pela descrição, pela data limite e pelo responsável.
  */
-public class GerenciadorTarefasModel {
+/*public class GerenciadorTarefasModel {
     
-    var listaTarefas = [Tarefa]()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    func adicionarTarefa(titulo: String, descricao: String, dataLimite: String, responsavel: String) {
+        let tarefa = Tarefa(context:context)
+        tarefa.dataCriacao = Date()
+        tarefa.titulo = titulo
+        tarefa.dataLimite = dataLimite
+        tarefa.responsavel = responsavel
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+    }
+    
+    func saveStudent(id : String, name: String) {
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let entity = NSEntityDescription.entity(forEntityName: "Student",
+                                                in: managedContext)!
+        
+        let student = NSManagedObject(entity: entity,
+                                      insertInto: managedContext)
+        
+        student.setValue(id, forKeyPath: "id")
+        student.setValue(name, forKeyPath: "name")
+        
+        do {
+            try managedContext.save()
+            students.append(student)
+        } catch let error as NSError {
+            print("Erro ao salvar: \(error), \(error.userInfo)")
+        }
+    }
+
     
     /**
      Adiciona tarefa ao Gerenciador de Tarefas
@@ -29,17 +64,17 @@ public class GerenciadorTarefasModel {
             self.listaTarefas.append(tarefa)
         }
     }
-
+    
     /**
      Retorna o total de tarefas
-    */
+     */
     func retornaTarefasCount() -> Int {
         return self.listaTarefas.count
     }
-
+    
     /**
      Salva tarefa em uma determinada posição da lista de tarefas
-    */
+     */
     func salvarTarefa(tarefa: Tarefa!, indice: Int) {
         if (tarefa != nil && tarefa.titulo != "") {
             let dateFormatter = DateFormatter()
@@ -54,7 +89,7 @@ public class GerenciadorTarefasModel {
     
     /**
      Verifica se a data e horário estão no formato correto
-    */
+     */
     func validaDataHorario(dataHorario: String) -> Bool {
         let dataLimitePattern = "^(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[0-2])/\\d\\d\\d\\d (00|[0-9]|1[0-9]|2[0-3]):([0-9]|[0-5][0-9]):([0-9]|[0-5][0-9])$"
         let dataLimiteRegex = try! NSRegularExpression(pattern: dataLimitePattern)
@@ -68,18 +103,40 @@ public class GerenciadorTarefasModel {
      Lista todas as tarefas que estão no Gerenciador de Tarefas
      */
     func listarTarefas() -> String {
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            let managedContext = appDelegate.persistentContainer.viewContext
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Tarefa")
+            do {
+                tarefas = try managedContext.fetch(fetchRequest)
+            } catch let error as NSError {
+                print("Não foi possível buscar a entidade tarefa \(error), \(error.userInfo)")
+            }
+        }
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
         dateFormatter.timeZone = TimeZone(abbreviation: "BRST")
         var description = ""
         var cont: Int = 1
-        for tarefa in self.listaTarefas {
+        for tarefa in self.tarefas {
             let strDataLimite = dateFormatter.string(from: tarefa.dataLimite)
             let strDataCriacao = dateFormatter.string(from: tarefa.dataCriacao)
             description += "Tarefa \(cont) - Data de criação: \(strDataCriacao) - Título: \(tarefa.titulo) - Descrição: \(tarefa.descricao) - Data limite: \(strDataLimite) - Responsável: \(tarefa.responsavel) \n"
             cont += 1
         }
         return description
+    }
+    
+    // MARK: - Custom methods
+    func getStudents() {
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            let managedContext = appDelegate.persistentContainer.viewContext
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Student")
+            do {
+                students = try managedContext.fetch(fetchRequest)
+            } catch let error as NSError {
+                print("Não foi possível buscar a entidade aluno \(error), \(error.userInfo)")
+            }
+        }
     }
     
     /**
@@ -142,7 +199,135 @@ public class GerenciadorTarefasModel {
     func orderByDataLimite() -> [Tarefa] {
         return listaTarefas.sorted(by: { $0.dataLimite < $1.dataLimite })
     }
-}
+} */
+
+//public class GerenciadorTarefasModel {
+//    
+//    var listaTarefas = [Tarefa]()
+//    
+//    /**
+//     Adiciona tarefa ao Gerenciador de Tarefas
+//     - parameter tarefa: Tarefa a ser adicionada
+//     */
+//    func adicionarTarefa(tarefa: Tarefa!) {
+//        if (tarefa != nil && tarefa.titulo != "") {
+//            self.listaTarefas.append(tarefa)
+//        }
+//    }
+//
+//    /**
+//     Retorna o total de tarefas
+//    */
+//    func retornaTarefasCount() -> Int {
+//        return self.listaTarefas.count
+//    }
+//
+//    /**
+//     Salva tarefa em uma determinada posição da lista de tarefas
+//    */
+//    func salvarTarefa(tarefa: Tarefa!, indice: Int) {
+//        if (tarefa != nil && tarefa.titulo != "") {
+//            let dateFormatter = DateFormatter()
+//            dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
+//            dateFormatter.timeZone = TimeZone(abbreviation: "BRST")
+//            self.listaTarefas[indice].titulo = tarefa.titulo
+//            self.listaTarefas[indice].descricao = tarefa.descricao
+//            self.listaTarefas[indice].dataLimite = tarefa.dataLimite
+//            self.listaTarefas[indice].responsavel = tarefa.responsavel
+//        }
+//    }
+//    
+//    /**
+//     Verifica se a data e horário estão no formato correto
+//    */
+//    func validaDataHorario(dataHorario: String) -> Bool {
+//        let dataLimitePattern = "^(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[0-2])/\\d\\d\\d\\d (00|[0-9]|1[0-9]|2[0-3]):([0-9]|[0-5][0-9]):([0-9]|[0-5][0-9])$"
+//        let dataLimiteRegex = try! NSRegularExpression(pattern: dataLimitePattern)
+//        let dataLimiteRange = NSMakeRange(0, dataHorario.characters.count)
+//        let matchRange = dataLimiteRegex.rangeOfFirstMatch(in: dataHorario, options: .reportProgress, range: dataLimiteRange)
+//        let valid = matchRange.location != NSNotFound
+//        return valid
+//    }
+//    
+//    /**
+//     Lista todas as tarefas que estão no Gerenciador de Tarefas
+//     */
+//    func listarTarefas() -> String {
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
+//        dateFormatter.timeZone = TimeZone(abbreviation: "BRST")
+//        var description = ""
+//        var cont: Int = 1
+//        for tarefa in self.listaTarefas {
+//            let strDataLimite = dateFormatter.string(from: tarefa.dataLimite)
+//            let strDataCriacao = dateFormatter.string(from: tarefa.dataCriacao)
+//            description += "Tarefa \(cont) - Data de criação: \(strDataCriacao) - Título: \(tarefa.titulo) - Descrição: \(tarefa.descricao) - Data limite: \(strDataLimite) - Responsável: \(tarefa.responsavel) \n"
+//            cont += 1
+//        }
+//        return description
+//    }
+//    
+//    /**
+//     Retorna todas as tarefas do Gerenciador de Tarefas cuja data de criação contém o termo de busca fornecido
+//     - parameter termo: Termo de busca fornecido
+//     */
+//    func findTarefasByDataCriacao(termo: String) -> [Tarefa] {
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
+//        dateFormatter.timeZone = TimeZone(abbreviation: "BRST")
+//        return listaTarefas.filter {
+//            let strDataCriacao = dateFormatter.string(from: $0.dataCriacao)
+//            return strDataCriacao.range(of: termo) != nil
+//        }
+//    }
+//    
+//    /**
+//     Retorna todas as tarefas do Gerenciador de Tarefas cujo título contem o termo de busca fornecido
+//     - parameter termo: Termo de busca fornecido
+//     */
+//    func findTarefasByTitulo(termo: String) -> [Tarefa] {
+//        return listaTarefas.filter { return $0.titulo.range(of: termo) != nil }
+//    }
+//    
+//    /**
+//     Retorna todas as tarefas do Gerenciador de Tarefas cuja descrição contém o termo de busca fornecido
+//     - parameter termo: Termo de busca fornecido
+//     */
+//    func findTarefasByDescricao(termo: String) -> [Tarefa] {
+//        return listaTarefas.filter({ (tarefa: Tarefa) -> Bool in return tarefa.descricao.range(of: termo) != nil })
+//    }
+//    
+//    /**
+//     Retorna todas as tarefas do Gerenciador de Tarefas cuja data limite contém o termo de busca fornecido
+//     - parameter termo: Termo de busca fornecido
+//     */
+//    func findTarefasByDataLimite(termo: String) -> [Tarefa] {
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
+//        dateFormatter.timeZone = TimeZone(abbreviation: "BRST")
+//        return listaTarefas.filter {
+//            let strDataLimite = dateFormatter.string(from: $0.dataLimite)
+//            return strDataLimite.range(of: termo) != nil
+//        }
+//    }
+//    
+//    /**
+//     Retorna todas as tarefas do Gerenciador de Tarefas cuja responsável contém o termo de busca fornecido
+//     - parameter termo: Termo de busca fornecido
+//     */
+//    func findTarefasByResponsavel(termo: String) -> [Tarefa] {
+//        return listaTarefas.filter { return $0.responsavel.range(of: termo) != nil }
+//    }
+//    
+//    
+//    /**
+//     Ordena as tarefas do Gerenciador de Tarefas pela data limite
+//     - parameter termo: Termo de busca fornecido
+//     */
+//    func orderByDataLimite() -> [Tarefa] {
+//        return listaTarefas.sorted(by: { $0.dataLimite < $1.dataLimite })
+//    }
+//}
 
 
 

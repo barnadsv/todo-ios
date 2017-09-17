@@ -19,22 +19,30 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var salvarTarefaButton: UIButton!
     
     var indice = 0
-    var dataCriacao: String = ""
+    var uuid: String = ""
+    var dataCriacao: NSDate!
+    var strDataCriacao: String?
     var titulo: String! = ""
     var descricao: String = ""
-    var dataLimite: String! = ""
+    var dataLimite: NSDate!
+    var strDataLimite: String?
     var responsavel: String = ""
     
     @IBAction func saveTarefa(_ sender: Any) {
         if (tituloTextField.text != "") {
-            if (gt.validaDataHorario(dataHorario: dataLimiteTextField.text!) == true || dataLimiteTextField.text == "") {
-                var tarefa: Tarefa!
+            if (Tarefas.sharedInstance.validaDataHorario(dataHorario: dataLimiteTextField.text!) == true || dataLimiteTextField.text == "") {
+                //var tarefa: Tarefa!
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
+                dateFormatter.timeZone = TimeZone(abbreviation: "BRST")
                 titulo = tituloTextField.text
                 descricao = descricaoTextField.text
-                dataLimite = dataLimiteTextField.text
+                //dataLimite = dataLimiteTextField.text
+                dataLimite = dateFormatter.date(from: dataLimiteTextField.text!)! as NSDate
                 responsavel = responsavelTextField.text!
-                tarefa = Tarefa(titulo: titulo, descricao: descricao, dataLimite: dataLimite, responsavel: responsavel)
-                gt.salvarTarefa(tarefa: tarefa, indice: indice)
+                //tarefa = Tarefa(titulo: titulo, descricao: descricao, dataLimite: dataLimite, responsavel: responsavel)
+                //gt.salvarTarefa(tarefa: tarefa, indice: indice)
+                Tarefas.sharedInstance.atualizaTarefa(uuid: uuid, titulo: titulo, descricao: descricao, dataLimite: dataLimite, responsavel: responsavel)
             } else {
                 let alertController = UIAlertController(title: "Atenção", message:
                     "Formato da Data Limite está incorreto!", preferredStyle: UIAlertControllerStyle.alert)
@@ -50,7 +58,7 @@ class DetailViewController: UIViewController {
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if (identifier == "segueToListView" && (tituloTextField.text! == "" || (gt.validaDataHorario(dataHorario: dataLimiteTextField.text!) == false && dataLimiteTextField.text != ""))) {
+        if (identifier == "segueToListView" && (tituloTextField.text! == "" || (Tarefas.sharedInstance.validaDataHorario(dataHorario: dataLimiteTextField.text!) == false && dataLimiteTextField.text != ""))) {
             return false
         } else {
             return true
@@ -113,10 +121,14 @@ class DetailViewController: UIViewController {
         
         salvarTarefaButton.layer.cornerRadius = 5
         
-        dataCriacaoLabel.text = dataCriacao
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
+        dateFormatter.timeZone = TimeZone(abbreviation: "BRST")
+        
+        dataCriacaoLabel.text = dateFormatter.string(from: dataCriacao as Date)
         tituloTextField.text = titulo
         descricaoTextField.text = descricao
-        dataLimiteTextField.text = dataLimite
+        dataLimiteTextField.text = dateFormatter.string(from: dataLimite as Date)
         responsavelTextField.text = responsavel
     }
     

@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Tarefa+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Tarefa+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:ToDoManager.xcodeproj">
    </FileRef>
    <FileRef
