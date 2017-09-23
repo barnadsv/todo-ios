@@ -83,12 +83,16 @@ public class Tarefas {
     Verifica se a data e horário estão no formato correto
     */
     func validaDataHorario(dataHorario: String) -> Bool {
-        let dataLimitePattern = "^(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[0-2])/\\d\\d\\d\\d ([0-9]|0[0-9]|1[0-9]|2[0-3]):([0-9]|[0-5][0-9]):([0-9]|[0-5][0-9])$"
-        let dataLimiteRegex = try! NSRegularExpression(pattern: dataLimitePattern)
+        let dataLimitePattern1 = "^(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[0-2])/\\d\\d\\d\\d ([0-9]|0[0-9]|1[0-9]|2[0-3]):([0-9]|[0-5][0-9]):([0-9]|[0-5][0-9])$"
+        let dataLimitePattern2 = "^((0?[1-9]|1[0-2])/0?[1-9]|[12][0-9]|3[01])/\\d\\d\\d\\d, ([0-9]|0[0-9]|1[0-9]|2[0-3]):([0-9]|[0-5][0-9]):([0-9]|[0-5][0-9])$"
+        let dataLimiteRegex1 = try! NSRegularExpression(pattern: dataLimitePattern1)
+        let dataLimiteRegex2 = try! NSRegularExpression(pattern: dataLimitePattern2)
         let dataLimiteRange = NSMakeRange(0, dataHorario.characters.count)
-        let matchRange = dataLimiteRegex.rangeOfFirstMatch(in: dataHorario, options: .reportProgress, range: dataLimiteRange)
-        let valid = matchRange.location != NSNotFound
-        return valid
+        let matchRange1 = dataLimiteRegex1.rangeOfFirstMatch(in: dataHorario, options: .reportProgress, range: dataLimiteRange)
+        let matchRange2 = dataLimiteRegex2.rangeOfFirstMatch(in: dataHorario, options: .reportProgress, range: dataLimiteRange)
+        let valid1 = matchRange1.location != NSNotFound
+        let valid2 = matchRange2.location != NSNotFound
+        return valid1 || valid2
     }
         
     /**
@@ -97,10 +101,9 @@ public class Tarefas {
      */
     func findTarefasByDataCriacao(termo: String) -> [Tarefa] {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
-        dateFormatter.timeZone = TimeZone(abbreviation: "BRST")
+        dateFormatter.setLocalizedDateFormatFromTemplate("dd/MM/yyyy HH:mm:ss")
         return tarefas.filter {
-            let strDataCriacao = dateFormatter.string(from: $0.dataCriacao as! Date)
+            let strDataCriacao = dateFormatter.string(from: $0.dataCriacao! as Date)
             return strDataCriacao.range(of: termo) != nil
         }
     }
@@ -127,8 +130,7 @@ public class Tarefas {
      */
     func findTarefasByDataLimite(termo: String) -> [Tarefa] {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
-        dateFormatter.timeZone = TimeZone(abbreviation: "BRST")
+        dateFormatter.setLocalizedDateFormatFromTemplate("dd/MM/yyyy HH:mm:ss")
         return tarefas.filter {
             let strDataLimite = dateFormatter.string(from: $0.dataLimite! as Date)
             return strDataLimite.range(of: termo) != nil

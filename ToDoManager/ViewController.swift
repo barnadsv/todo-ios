@@ -39,8 +39,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             indice = Tarefas.sharedInstance.retornaTarefasCount() - 1
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
-            dateFormatter.timeZone = TimeZone(abbreviation: "BRST")
+            dateFormatter.setLocalizedDateFormatFromTemplate("dd/MM/yyyy HH:mm:ss")
             
             strDataCriacao = dateFormatter.string(from: dataCriacao as Date)
             titulo = input.text!
@@ -63,8 +62,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
    
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
-        dateFormatter.timeZone = TimeZone(abbreviation: "BRST")
+        dateFormatter.setLocalizedDateFormatFromTemplate("dd/MM/yyyy HH:mm:ss")
         
         let item = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "item")
         item.textLabel?.text = Tarefas.sharedInstance.tarefas[indexPath.row].titulo
@@ -92,9 +90,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         indice = row
         print("Row: \(row)")
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
-        dateFormatter.timeZone = TimeZone(abbreviation: "BRST")
         uuid = Tarefas.sharedInstance.tarefas[row].uuid
         dataCriacao = Tarefas.sharedInstance.tarefas[row].dataCriacao!
         titulo = Tarefas.sharedInstance.tarefas[row].titulo

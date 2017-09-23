@@ -28,23 +28,27 @@ class DetailViewController: UIViewController {
     var strDataLimite: String?
     var responsavel: String = ""
     
+    var dataLimiteValida: Bool = false
+    
     @IBAction func saveTarefa(_ sender: Any) {
         if (tituloTextField.text != "") {
-            if (Tarefas.sharedInstance.validaDataHorario(dataHorario: dataLimiteTextField.text!) == true || dataLimiteTextField.text == "") {
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
-                dateFormatter.timeZone = TimeZone(abbreviation: "BRST")
+            let dateFormatter = DateFormatter()
+            dateFormatter.setLocalizedDateFormatFromTemplate("dd/MM/yyyy HH:mm:ss")
+            if let tempDataLimite = dateFormatter.date(from: dataLimiteTextField.text!) {
                 titulo = tituloTextField.text
                 descricao = descricaoTextField.text
-                dataLimite = dateFormatter.date(from: dataLimiteTextField.text!)! as NSDate
                 responsavel = responsavelTextField.text!
+                dataLimite = tempDataLimite as NSDate
+                dataLimiteValida = true
                 Tarefas.sharedInstance.atualizaTarefa(uuid: uuid, titulo: titulo, descricao: descricao, dataLimite: dataLimite, responsavel: responsavel)
             } else {
                 let alertController = UIAlertController(title: "Atenção", message:
                     "Formato da Data Limite está incorreto!", preferredStyle: UIAlertControllerStyle.alert)
                 alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default,handler: nil))
                 self.present(alertController, animated: true, completion: nil)
+                dataLimiteValida = false
             }
+
         } else {
             let alertController = UIAlertController(title: "Atenção", message:
                 "Título não pode ser vazio!", preferredStyle: UIAlertControllerStyle.alert)
@@ -53,13 +57,15 @@ class DetailViewController: UIViewController {
         }
     }
     
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if (identifier == "segueToListView" && (tituloTextField.text! == "" || (Tarefas.sharedInstance.validaDataHorario(dataHorario: dataLimiteTextField.text!) == false && dataLimiteTextField.text != ""))) {
-            return false
-        } else {
-            return true
-        }
+    
+     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        //if (identifier == "segueToListView" && (tituloTextField.text! == "" || (Tarefas.sharedInstance.validaDataHorario(dataHorario: dataLimiteTextField.text!) == false && dataLimiteTextField.text != ""))) {
+        //    return false
+        //} else {
+            return dataLimiteValida
+        //}
     }
+ 
     
     @IBAction func dataLimiteEditing(_ sender: UITextField) {
         
@@ -69,7 +75,8 @@ class DetailViewController: UIViewController {
 //        datePickerView.addTarget(self, action: #selector(DetailViewController.datePickerValueChanged), for: UIControlEvents.valueChanged)
         
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/YYYY HH:mm:ss"
+        formatter.setLocalizedDateFormatFromTemplate("dd/MM/yyyy HH:mm:ss")
+        //formatter.dateFormat = "dd/MM/YYYY HH:mm:ss"
         let min = Date()
         let max = Date().addingTimeInterval(60 * 60 * 24 * 365)
         let picker = DateTimePicker.show(minimumDate: min, maximumDate: max)
@@ -89,8 +96,7 @@ class DetailViewController: UIViewController {
     
     func datePickerValueChanged(sender:UIDatePicker) {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-        dateFormatter.timeZone = TimeZone(abbreviation: "BRST")
+        dateFormatter.setLocalizedDateFormatFromTemplate("dd/MM/yyyy HH:mm:ss")
         dataLimiteTextField.text = dateFormatter.string(from: sender.date)
     }
 
@@ -118,8 +124,7 @@ class DetailViewController: UIViewController {
         salvarTarefaButton.layer.cornerRadius = 5
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
-        dateFormatter.timeZone = TimeZone(abbreviation: "BRST")
+        dateFormatter.setLocalizedDateFormatFromTemplate("dd/MM/yyyy HH:mm:ss")
         
         dataCriacaoLabel.text = dateFormatter.string(from: dataCriacao as Date)
         tituloTextField.text = titulo
