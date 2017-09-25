@@ -55,21 +55,23 @@ public class Tarefas {
     }
     
     func atualizaTarefa(uuid: String, titulo: String, descricao: String, dataLimite: NSDate, responsavel: String) {
-        let request = NSFetchRequest<Tarefa>(entityName: "Tarefa")
-        do {
-            let resultados = try context.fetch(request)
-            for tarefa in resultados {
-                if tarefa.uuid == uuid {
-                    tarefa.titulo = titulo
-                    tarefa.descricao = descricao
-                    tarefa.dataLimite = dataLimite
-                    tarefa.responsavel = responsavel
+        if (titulo != "") {
+            let request = NSFetchRequest<Tarefa>(entityName: "Tarefa")
+            do {
+                let resultados = try context.fetch(request)
+                for tarefa in resultados {
+                    if tarefa.uuid == uuid {
+                        tarefa.titulo = titulo
+                        tarefa.descricao = descricao
+                        tarefa.dataLimite = dataLimite
+                        tarefa.responsavel = responsavel
+                    }
                 }
+            } catch {
+                print("Error with request: \(error)")
             }
-        } catch {
-            print("Error with request: \(error)")
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
         }
-        (UIApplication.shared.delegate as! AppDelegate).saveContext()
     }
     
     /**

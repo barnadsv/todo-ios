@@ -10,8 +10,8 @@
 		872D28FE4018F45AB16CE0B2 /* Pods_ToDoManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64906CD5C7513BB3244C84D1 /* Pods_ToDoManager.framework */; };
 		A72317DF1F6D932B00790361 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72317DE1F6D932B00790361 /* CoreDataManager.swift */; };
 		A72317E91F6D9BB300790361 /* Tarefas.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72317E81F6D9BB300790361 /* Tarefas.swift */; };
-		A78C25F01F4FB0410049ADE5 /* GerenciadorTarefasModelTests1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78C25EF1F4FB0410049ADE5 /* GerenciadorTarefasModelTests1.swift */; };
-		A78C25FA1F50C4300049ADE5 /* GerenciadorTarefasModelTests2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78C25F91F50C4300049ADE5 /* GerenciadorTarefasModelTests2.swift */; };
+		A78C25F01F4FB0410049ADE5 /* TarefasTests1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78C25EF1F4FB0410049ADE5 /* TarefasTests1.swift */; };
+		A78C25FA1F50C4300049ADE5 /* TarefasTests2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78C25F91F50C4300049ADE5 /* TarefasTests2.swift */; };
 		A7A3A50D1F6D717C003AD938 /* ToDoManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A7A3A50B1F6D717C003AD938 /* ToDoManager.xcdatamodeld */; };
 		E9ECEF451F44A6B100A80583 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECEF441F44A6B100A80583 /* AppDelegate.swift */; };
 		E9ECEF471F44A6B100A80583 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECEF461F44A6B100A80583 /* ViewController.swift */; };
@@ -45,8 +45,8 @@
 		8DAFF9F159DE535C75D3C120 /* Pods-ToDoManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoManager.release.xcconfig"; path = "Pods/Target Support Files/Pods-ToDoManager/Pods-ToDoManager.release.xcconfig"; sourceTree = "<group>"; };
 		A72317DE1F6D932B00790361 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		A72317E81F6D9BB300790361 /* Tarefas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tarefas.swift; sourceTree = "<group>"; };
-		A78C25EF1F4FB0410049ADE5 /* GerenciadorTarefasModelTests1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GerenciadorTarefasModelTests1.swift; sourceTree = "<group>"; };
-		A78C25F91F50C4300049ADE5 /* GerenciadorTarefasModelTests2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GerenciadorTarefasModelTests2.swift; sourceTree = "<group>"; };
+		A78C25EF1F4FB0410049ADE5 /* TarefasTests1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TarefasTests1.swift; sourceTree = "<group>"; };
+		A78C25F91F50C4300049ADE5 /* TarefasTests2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TarefasTests2.swift; sourceTree = "<group>"; };
 		A7A3A50C1F6D717C003AD938 /* ToDoManager.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ToDoManager.xcdatamodel; sourceTree = "<group>"; };
 		A7F42FF31F661F1B0061245F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
 		A7F42FF41F661F1B0061245F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
@@ -143,8 +143,8 @@
 			isa = PBXGroup;
 			children = (
 				E9ECEF5B1F44A6B100A80583 /* Info.plist */,
-				A78C25EF1F4FB0410049ADE5 /* GerenciadorTarefasModelTests1.swift */,
-				A78C25F91F50C4300049ADE5 /* GerenciadorTarefasModelTests2.swift */,
+				A78C25EF1F4FB0410049ADE5 /* TarefasTests1.swift */,
+				A78C25F91F50C4300049ADE5 /* TarefasTests2.swift */,
 			);
 			path = ToDoManagerTests;
 			sourceTree = "<group>";
@@ -370,8 +370,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A78C25F01F4FB0410049ADE5 /* GerenciadorTarefasModelTests1.swift in Sources */,
-				A78C25FA1F50C4300049ADE5 /* GerenciadorTarefasModelTests2.swift in Sources */,
+				A78C25F01F4FB0410049ADE5 /* TarefasTests1.swift in Sources */,
+				A78C25FA1F50C4300049ADE5 /* TarefasTests2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

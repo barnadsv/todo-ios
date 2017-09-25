@@ -18,12 +18,14 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var dataCriacaoLabel: UILabel!
     @IBOutlet weak var salvarTarefaButton: UIButton!
     
+    @IBOutlet weak var ToDoTituloHorizontalAlignment: NSLayoutConstraint!
+    
     var indice = 0
     var uuid: String = ""
     var dataCriacao: NSDate!
     var strDataCriacao: String?
     var titulo: String! = ""
-    var descricao: String = ""
+    var descricao: String! = ""
     var dataLimite: NSDate!
     var strDataLimite: String?
     var responsavel: String = ""
@@ -99,10 +101,18 @@ class DetailViewController: UIViewController {
         dateFormatter.setLocalizedDateFormatFromTemplate("dd/MM/yyyy HH:mm:ss")
         dataLimiteTextField.text = dateFormatter.string(from: sender.date)
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        ToDoTituloHorizontalAlignment.constant += view.bounds.width
+        tituloTextField.backgroundColor = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0)
+        descricaoTextField.backgroundColor = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0)
+        dataLimiteTextField.backgroundColor = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0)
+        responsavelTextField.backgroundColor = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0)
+        view.backgroundColor = UIColor(red: 250.0/255.0, green: 250.0/255.0, blue: 250.0/255.0, alpha: 1)
+        //view.backgroundColor = UIColor(red:0.92, green:0.98, blue:1.00, alpha:1.0)
+        salvarTarefaButton.alpha = 0
         
         let borderColor = UIColor.lightGray
         tituloTextField.layer.borderColor = borderColor.cgColor
@@ -131,6 +141,31 @@ class DetailViewController: UIViewController {
         descricaoTextField.text = descricao
         dataLimiteTextField.text = dateFormatter.string(from: dataLimite as Date)
         responsavelTextField.text = responsavel
+        
+        
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+            self.view.backgroundColor = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1)
+        }, completion: nil)
+        
+        
+        UIView.animate(withDuration: 2.0, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+            self.tituloTextField.backgroundColor = UIColor(red: 250.0/255.0, green: 250.0/255.0, blue: 250.0/255.0, alpha: 1)
+            self.descricaoTextField.backgroundColor = UIColor(red: 250.0/255.0, green: 250.0/255.0, blue: 250.0/255.0, alpha: 1)
+            self.dataLimiteTextField.backgroundColor = UIColor(red: 250.0/255.0, green: 250.0/255.0, blue: 250.0/255.0, alpha: 1)
+            self.responsavelTextField.backgroundColor = UIColor(red: 250.0/255.0, green: 250.0/255.0, blue: 250.0/255.0, alpha: 1)
+            self.salvarTarefaButton.alpha = 1
+        }, completion: nil)
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+            self.ToDoTituloHorizontalAlignment.constant -= self.view.bounds.width
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+
     }
     
     override func didReceiveMemoryWarning() {

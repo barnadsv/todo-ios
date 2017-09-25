@@ -31,24 +31,36 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var criarTarefaButton: UIButton!
     
     @IBAction func addItem(_ sender: Any) {
-        if (input.text != "") {
-            uuid = UUID().uuidString
-            dataCriacao = NSDate()
-            dataLimite = NSDate()
-            Tarefas.sharedInstance.adicionarTarefa(uuid: uuid, dataCriacao: dataCriacao, titulo: input.text!, descricao: "", dataLimite: dataLimite, responsavel: "")
-            
-            indice = Tarefas.sharedInstance.retornaTarefasCount() - 1
-            let dateFormatter = DateFormatter()
-            dateFormatter.setLocalizedDateFormatFromTemplate("dd/MM/yyyy HH:mm:ss")
-            
-            strDataCriacao = dateFormatter.string(from: dataCriacao as Date)
-            titulo = input.text!
-            descricao = ""
-            strDataLimite = dateFormatter.string(from: dataLimite as Date)
-            responsavel = ""
-            performSegue(withIdentifier: "segueToDetailView", sender: self)
-            input.text = ""
-        }
+        UIView.animate(withDuration: 0.4,
+                       animations: {
+                            self.criarTarefaButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+                       },
+                       completion: { _ in
+                            UIView.animate(withDuration: 0.2) {
+                                self.criarTarefaButton.transform = CGAffineTransform.identity
+                                if (self.input.text != "") {
+                                    self.uuid = UUID().uuidString
+                                    self.dataCriacao = NSDate()
+                                    self.dataLimite = NSDate()
+                                    Tarefas.sharedInstance.adicionarTarefa(uuid: self.uuid, dataCriacao: self.dataCriacao, titulo: self.input.text!, descricao: "", dataLimite: self.dataLimite, responsavel: "")
+                                    
+                                    self.indice = Tarefas.sharedInstance.retornaTarefasCount() - 1
+                                    let dateFormatter = DateFormatter()
+                                    dateFormatter.setLocalizedDateFormatFromTemplate("dd/MM/yyyy HH:mm:ss")
+                                    
+                                    self.strDataCriacao = dateFormatter.string(from: self.dataCriacao as Date)
+                                    self.titulo = self.input.text!
+                                    self.descricao = ""
+                                    self.strDataLimite = dateFormatter.string(from: self.dataLimite as Date)
+                                    self.responsavel = ""
+                                    self.performSegue(withIdentifier: "segueToDetailView", sender: self)
+                                    self.input.text = ""
+                                }
+
+                            }
+                        })
+        
+ 
     }
     
     public func numberOfSections(in tableView: UITableView) -> Int {
@@ -72,6 +84,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let bgColorView = UIView()
         bgColorView.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
         item.selectedBackgroundView = bgColorView
+    
+        UIView.animate(withDuration: 1.5, delay: 0.05, options: UIViewAnimationOptions.curveEaseOut, animations: {
+            item.transform = CGAffineTransform(translationX: 0, y: 0);
+        }, completion: nil)
         
         return(item)
     }
@@ -114,7 +130,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidAppear(_ animated: Bool) {
         todoTableView.reloadData()
-        
+        animateTable()
     }
     
     override func viewDidLoad() {
@@ -130,12 +146,38 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tarefas = Tarefas.sharedInstance.getTarefas()
+        todoTableView.alpha = 0
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
+    func animateTable() {
+        
+        let cells = todoTableView.visibleCells
+        let tableHeight: CGFloat = todoTableView.bounds.size.height
+        
+        for i in cells {
+            let cell: UITableViewCell = i as UITableViewCell
+            cell.transform = CGAffineTransform(translationX: 0, y: tableHeight)
+        }
+        
+        var index = 0
+        
+        for a in cells {
+            let cell: UITableViewCell = a as UITableViewCell
+            UIView.animate(withDuration: 0.5, delay: 0.05 * Double(index), usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: {
+                cell.transform = CGAffineTransform(translationX: 0, y: 0)
+                self.todoTableView.alpha = 1
+            }, completion: nil)
+            let borderColor = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 245.0/255.0, alpha: 1)
+            cell.layer.borderColor = borderColor.cgColor
+            cell.layer.borderWidth = 1.0
+
+            index += 1
+        }
+    }
 
 }
 
